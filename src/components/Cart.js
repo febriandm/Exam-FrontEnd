@@ -40,7 +40,7 @@ class Cart extends Component {
         Axios.delete(
             'http://localhost:2022/Cart/' + ID,
         ).then(res => {
-            console.log('Berhasil dihapus');
+            console.log('Deleted sucessfully');
             console.log({cart: res.data});
 
 
@@ -51,7 +51,7 @@ class Cart extends Component {
 
 
 
-    handleTotalQty = () => {
+    procTotalQty = () => {
         var totalQty = 0
         var cart = this.state.cart.map(item => {
             return {
@@ -69,7 +69,7 @@ class Cart extends Component {
     }
 
 
-    handleTotalPrice = () => {
+    procTotalPrice = () => {
         var totalPrice = 0
         var cart = this.state.cart.map(item => {
             return {
@@ -84,14 +84,8 @@ class Cart extends Component {
         return (<td>{totalPrice}</td>)
     }
 
-
-
-
     renderList = () => {
-        console.log("here");
-        console.log(this.state.cart)
-        console.log("idUser");
-        
+
         return this.state.cart.map( item => {
             console.log(item)
             if(item.idUser === this.props.user.id){
@@ -102,17 +96,13 @@ class Cart extends Component {
                         <td className='text-center'>{item.productPrice}</td>
                         <td className='text-center'>{item.inputCart}</td>
                         <td className='text-center'>
-                            <img src={item.inputGambar} className='' width='65px'></img>
+                            <img src={item.inputPict} className='' width='50px'></img>
                         </td>
-                        <td className='text-center'>{item.productPrice  * item.inputCart}</td>
                         <td className='text-center'>
                             <button className='btn btn-outline-primary ml-2'onClick = { () => {this.deleteCart(item)}} > Delete</button>
                         </td>     
                         
                     </tr> 
-                    // <tr>
-                    //     <td>test</td>
-                    // </tr>
                 )                        
 
             }
@@ -129,33 +119,25 @@ class Cart extends Component {
                     <Link to={'/'}>
                     <button className ='btn btn-outline-primary mt-2'>Continue Shopping</button>
                     </Link>
-                    <button className='btn btn-outline-primary mt-2 ml-2'>Checkout</button>
+                    
                 </div>
-                <h1 className="display-4 text-center">Cart List</h1>
+                <h1 className="display-4 text-center">Cart</h1>
                 <table className="table table-hover mb-5">
                     <thead>
                     <tr className='text-center'>
                             <th className='text-center'>ID</th>
                             <th className='text-center'>NAME</th>                            
                             <th className='text-center'>PRICE</th>
-                            <th className='text-center'>QUANTITY</th>
+                            <th className='text-center'>QTY</th>
                             <th className='text-center'>PICTURE</th>
-                            <th className='text-center'>TOTAL HARGA</th>
                             <th className='text-center'>ACTION</th>                            
                         </tr>
                     </thead>
                     <tbody>
                             {this.renderList()}
-                            <tr>
-                                <td className='text-center'>TOTAL</td>
-                                <td className='text-center'></td>
-                                <div className='text-center'>
-                                    {this.handleTotalPrice}
-                                    {this.handleTotalQty}
-                                </div>
-                            </tr>
                     </tbody>
                 </table>
+                <button className='btn btn-outline-primary mt-2 ml-2'>Checkout</button>
             </div>
         )
     }

@@ -87,7 +87,7 @@ class Header extends Component {
                         </Link>
                         <Link to = "/cart">
                         <DropdownItem>
-                        Cart
+                        Shopping Cart
                         </DropdownItem>
                         </Link>
                         <DropdownItem divider />

@@ -25,35 +25,31 @@ class ProductItem extends Component {
                     inputCart : qty,
                     inputPict : src
         }).then (res => {
-            alert('sudah di input')
+            alert('Success')
             })
 
         }else {
             if(idUser === '') {
-                alert('Login terlebih dahulu')
+                alert('Login first')
             }else {
-                alert("Isi barang yang anda beli")
+                alert("Input quantity")
             }
         }}
 
 
     render() {
-        var {id, name, price, src} = this.props.product //{id, name, desc, src}
-        // id = 1
+        var {id, name, price, src} = this.props.product
 
         return (
             <div className="card col-3 m-4 " >
                 <img className='card-img-top' src={src} width='250px' alt=''/>
                 <div className='card-body' >
                     <h5 className='card-title' >{name}</h5>
-                    {/* <p className='card-text'>{desc}</p> */}
                     <p className='card-text'>Rp. {price}</p>
-                    {/* untuk menangkap inputan */}
                     <input type='text' className='form-control btn-block' ref={(input) => {this.qty = input}} />
                     <Link to={'/detailproduct/' + id}>
                         <button className='btn btn-outline-primary btn-block m-auto'>Details</button>
                     </Link>
-                    {/* connect state product dari home kedalam fun add to cart */}
                     <button className='btn btn-primary btn-block' onClick={() => {this.addCart (this.props.product)}} >Add To Cart</button>
                 </div>                
             </div>
