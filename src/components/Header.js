@@ -85,9 +85,9 @@ class Header extends Component {
                         Manage Product
                         </DropdownItem>
                         </Link>
-                        <Link>
+                        <Link to = "/cart">
                         <DropdownItem>
-                        Option 2
+                        Cart
                         </DropdownItem>
                         </Link>
                         <DropdownItem divider />
